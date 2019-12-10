@@ -18,5 +18,22 @@ func main() {
 		}
 		c.JSON(http.StatusOK, cats)
 	})
+	r.PATCH("/cat/reserve", func(c *gin.Context) {
+		accepts := c.Request.Header.Get("Accepts")
+		result := cats.Reserve()
+		if result != nil {
+			if accepts == "application/xml" {
+				c.XML(http.StatusOK, result)
+				return
+			}
+			c.JSON(http.StatusOK, result)
+			return
+		}
+		if accepts == "application/xml" {
+			c.XML(http.StatusConflict, gin.H{"error": "Resource Exhausted"})
+			return
+		}
+		c.AbortWithStatusJSON(http.StatusConflict, gin.H{"error": "Resource Exhausted"})
+	})
 	r.Run() // listen and serve on 0.0.0.0:8080
 }

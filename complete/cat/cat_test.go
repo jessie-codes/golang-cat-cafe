@@ -1,6 +1,7 @@
 package cat
 
 import (
+	"encoding/json"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -13,8 +14,10 @@ type CatListTestSuite struct {
 }
 
 func (suite *CatListTestSuite) SetupTest() {
-	suite.TestCats = &Cats{
-		List: CafeCats,
+	suite.TestCats = &Cats{}
+	err := json.Unmarshal(cafeCats, &suite.TestCats.List)
+	if err != nil {
+		panic("Unable to load cats")
 	}
 }
 
@@ -26,16 +29,6 @@ func (suite *CatListTestSuite) TestGetByPersonality() {
 	assert.Equal(t, 1, len(result.List))
 	result = suite.TestCats.GetByPersonality("mean")
 	assert.Equal(t, 0, len(result.List))
-}
-
-func (suite *CatListTestSuite) TestReserve() {
-	t := suite.T()
-	for i := 0; i < len(suite.TestCats.List); i++ {
-		result := suite.TestCats.Reserve()
-		assert.NotNil(t, result)
-	}
-	result := suite.TestCats.Reserve()
-	assert.Nil(t, result)
 }
 
 func TestCatListTestSuite(t *testing.T) {

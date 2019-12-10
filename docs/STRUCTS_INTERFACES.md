@@ -1,5 +1,8 @@
 # Structs and Interfaces
 
+<img src="structs.jpg"
+     style="height:500px;" />
+
 Before we begin to dig into structs and interface, let's go over some quick basics about go.
 
 - Public variables and functions start with a captial letter.
@@ -97,5 +100,7 @@ result.List = append(result.List, cat)
 ```
 
 Try using these concepts to update `GetByPersonality` so all of the tests pass. Completely stuck? Check out `complete/cat/cat.go` for the finished version of the function.
+
+**NOTE** Don't need a variable that comes back from a function or loop? Use `_` as the variable name to let the compiler know you won't be using it.
 
 [Part Two - Building a Simple REST Server](REST.md)

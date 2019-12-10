@@ -1,26 +1,23 @@
 package cat
 
-//CafeCats is the full list of cats at the cat cage
-var CafeCats []*Cat = []*Cat{
-	&Cat{
-		Name:        "Doctor Fluffy Pants",
-		Breed:       "Persian",
-		Personality: "diva",
-		Available:   true,
-	}, &Cat{
-		Name:        "Jazz Paws",
-		Breed:       "American Shorthair",
-		Personality: "playful",
-		Available:   true,
-	}, &Cat{
-		Name:        "General Floof",
-		Breed:       "LaPerm",
-		Personality: "diva",
-		Available:   true,
-	}, &Cat{
-		Name:        "Kitty Poppins",
-		Breed:       "Scottish Fold",
-		Personality: "shy",
-		Available:   true,
-	},
-}
+var cafeCats []byte = []byte(`[{
+	"name": "Doctor Fluffy Pants",
+	"breed": "Persian",
+	"personality": "diva",
+	"available": true
+}, {
+	"name": "Jazz Paws",
+	"breed": "American Shorthair",
+	"personality": "playful",
+	"available": true
+}, {
+	"name": "General Floof",
+	"breed": "LaPerm",
+	"personality": "diva",
+	"available": true
+}, {
+	"name": "Kitty Poppins",
+	"breed": "Scottish Fold",
+	"personality": "shy",
+	"available": true
+}]`)

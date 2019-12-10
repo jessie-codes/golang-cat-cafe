@@ -1,5 +1,8 @@
 # REST API
 
+<img src="rest.jpg"
+     style="height:500px;" />
+
 For this workshop, we will be using the popular REST framework [Gin](https://github.com/gin-gonic/gin).
 
 We'll begin by examing the code in `tutorial/main.go`. Here's a few things to keep in mind when reading through this code:
@@ -59,7 +62,7 @@ r.GET("/cat/:personality", func(c *gin.Context) {
 
 We can also access the value of that parameter using `c.Param("personality")`. Build out the endpoint to return the filtered result. You can test your endpoint by going to [http://localhost:8080/cat/diva](http://localhost:8080/cat/diva). If your code is working, you should recieve a response with just two cats.
 
-## Part Four - Handling Empty Responses
+## Task Four - Handling Empty Responses
 
 What if we pass in a personality that doesn't match any of our cats? Right now, we would return a `Cats` struct with an empty `List`. A better experience might be to return a `404` to indicate we could not find any matching cats.
 

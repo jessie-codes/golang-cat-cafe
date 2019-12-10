@@ -1,6 +1,7 @@
 package cat
 
 import (
+	"encoding/json"
 	"sync"
 	"time"
 )
@@ -27,8 +28,10 @@ type List interface {
 
 //Get returns a list of all cats
 func Get() List {
-	cats := Cats{
-		List: CafeCats,
+	cats := Cats{}
+	err := json.Unmarshal(cafeCats, &cats.List)
+	if err != nil {
+		panic("Unable to load cats")
 	}
 	return &cats
 }
